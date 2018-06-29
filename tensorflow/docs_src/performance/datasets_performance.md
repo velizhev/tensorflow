@@ -47,8 +47,8 @@ Transform) are captured in the `input_fn` passed to
 def parse_fn(example):
   "Parse TFExample records and perform simple data augmentation."
   example_fmt = {
-    "image": tf.FixedLengthFeature((), tf.string, ""),
-    "label": tf.FixedLengthFeature((), tf.int64, -1)
+    "image": tf.FixedLenFeature((), tf.string, ""),
+    "label": tf.FixedLenFeature((), tf.int64, -1)
   }
   parsed = tf.parse_single_example(example, example_fmt)
   image = tf.image.decode_image(parsed["image"])
